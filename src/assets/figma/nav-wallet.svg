@@ -1,0 +1,8 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="wallet">
+<g id="Vector">
+<path d="M14.5 5H12.5V2H14C14.276 2 14.5 2.2245 14.5 2.5V5ZM14.5 10H9.5C8.397 10 7.5 9.103 7.5 8C7.5 6.897 8.397 6 9.5 6H14.5V10ZM14.5 13.5C14.5 13.7755 14.276 14 14 14H12.5V11H14.5V13.5ZM11.5 14H2C1.7245 14 1.5 13.7755 1.5 13.5V2.5C1.5 2.2245 1.7245 2 2 2H11.5V5H9.5C7.8455 5 6.5 6.3455 6.5 8C6.5 9.6545 7.8455 11 9.5 11H11.5V14ZM14 1H2C1.173 1 0.5 1.673 0.5 2.5V13.5C0.5 14.327 1.173 15 2 15H14C14.827 15 15.5 14.327 15.5 13.5V2.5C15.5 1.673 14.827 1 14 1Z" fill-rule="evenodd" clip-rule="evenodd" fill="black" fill-opacity="0.75"/>
+<path d="M9 7.5C8.7235 7.5 8.5 7.724 8.5 8C8.5 8.276 8.7235 8.5 9 8.5C9.2765 8.5 9.5 8.276 9.5 8C9.5 7.724 9.2765 7.5 9 7.5Z" fill-rule="evenodd" clip-rule="evenodd" fill="black" fill-opacity="0.75"/>
+</g>
+</g>
+</svg>

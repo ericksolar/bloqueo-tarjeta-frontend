@@ -1,0 +1,10 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Page 1">
+<g id="Fill 1">
+</g>
+<g id="Group 6">
+<path id="Fill 2" d="M28 3H25V6H21V3H11V6H7V3H4C2.343 3 1 4.343 1 6V11H31V6C31 4.343 29.657 3 28 3" fill-rule="evenodd" clip-rule="evenodd" fill="#1BB5EC"/>
+<path id="Fill 4" d="M29 28C29 28.551 28.551 29 28 29H4C3.449 29 3 28.551 3 28V11H29V28ZM3 6C3 5.449 3.449 5 4 5H6V6C6 6.552 6.448 7 7 7H11C11.552 7 12 6.552 12 6V5H20V6C20 6.552 20.448 7 21 7H25C25.552 7 26 6.552 26 6V5H28C28.551 5 29 5.449 29 6V9H3V6ZM8 5H10V3H8V5ZM22 5H24V3H22V5ZM28 3H26V2C26 1.448 25.552 1 25 1H21C20.448 1 20 1.448 20 2V3H12V2C12 1.448 11.552 1 11 1H7C6.448 1 6 1.448 6 2V3H4C2.346 3 1 4.346 1 6V28C1 29.654 2.346 31 4 31H28C29.654 31 31 29.654 31 28V6C31 4.346 29.654 3 28 3V3Z" fill-rule="evenodd" clip-rule="evenodd" fill="#364F6B"/>
+</g>
+</g>
+</svg>

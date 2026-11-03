@@ -1,0 +1,13 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon">
+<g id="Vector">
+<path d="M2.25 18V6H21.75L21.7507 18H2.25ZM21.75 4.5H2.25C1.42275 4.5 0.75 5.17275 0.75 6V18C0.75 18.8273 1.42275 19.5 2.25 19.5H21.75C22.5773 19.5 23.25 18.8273 23.25 18V6C23.25 5.17275 22.5773 4.5 21.75 4.5Z" fill-rule="evenodd" clip-rule="evenodd" fill="black" fill-opacity="0.75"/>
+<path d="M5.25 10.5H6.75V9H5.25V10.5ZM8.25 8.25C8.25 7.836 7.91475 7.5 7.5 7.5H4.5C4.08525 7.5 3.75 7.836 3.75 8.25V11.25C3.75 11.664 4.08525 12 4.5 12H7.5C7.91475 12 8.25 11.664 8.25 11.25V8.25Z" fill-rule="evenodd" clip-rule="evenodd" fill="black" fill-opacity="0.75"/>
+<path d="M19.5 9H10.5C10.0852 9 9.75 9.336 9.75 9.75C9.75 10.164 10.0852 10.5 10.5 10.5H19.5C19.9147 10.5 20.25 10.164 20.25 9.75C20.25 9.336 19.9147 9 19.5 9Z" fill-rule="evenodd" clip-rule="evenodd" fill="black" fill-opacity="0.75"/>
+<path d="M6 15H4.5C4.08525 15 3.75 15.336 3.75 15.75C3.75 16.164 4.08525 16.5 4.5 16.5H6C6.41475 16.5 6.75 16.164 6.75 15.75C6.75 15.336 6.41475 15 6 15Z" fill-rule="evenodd" clip-rule="evenodd" fill="black" fill-opacity="0.75"/>
+<path d="M10.5 15H9C8.58525 15 8.25 15.336 8.25 15.75C8.25 16.164 8.58525 16.5 9 16.5H10.5C10.9148 16.5 11.25 16.164 11.25 15.75C11.25 15.336 10.9148 15 10.5 15Z" fill-rule="evenodd" clip-rule="evenodd" fill="black" fill-opacity="0.75"/>
+<path d="M15 15H13.5C13.0852 15 12.75 15.336 12.75 15.75C12.75 16.164 13.0852 16.5 13.5 16.5H15C15.4148 16.5 15.75 16.164 15.75 15.75C15.75 15.336 15.4148 15 15 15Z" fill-rule="evenodd" clip-rule="evenodd" fill="black" fill-opacity="0.75"/>
+<path d="M19.5 15H18C17.5853 15 17.25 15.336 17.25 15.75C17.25 16.164 17.5853 16.5 18 16.5H19.5C19.9147 16.5 20.25 16.164 20.25 15.75C20.25 15.336 19.9147 15 19.5 15Z" fill-rule="evenodd" clip-rule="evenodd" fill="black" fill-opacity="0.75"/>
+</g>
+</g>
+</svg>

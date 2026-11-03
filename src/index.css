@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* Design tokens from the Figma file (bloqueo-tarjetas) */
+@theme {
+  --font-sans: "Ubuntu", system-ui, sans-serif;
+
+  --color-brand: #e81e2b; /* Brand Colors/Primary */
+  --color-brand-secondary: #007db7; /* Brand Colors/Secondary */
+  --color-red-dark: #d64145; /* Complementary Colors/Red Dark */
+  --color-red-darker: #b00009; /* Complementary Colors/Red Darker */
+  --color-red-soft: #f9d4d5; /* Complementary Colors/Red Soft */
+  --color-green-darker: #238805; /* Complementary Colors/Green Darker */
+  --color-green-soft: #ccf1c1; /* Complementary Colors/Green Soft */
+  --color-blue-soft: #c0e9fd; /* Complementary Colors/Blue Soft */
+  --color-info-dark: #005d8f; /* Input Feedback/Info/Info-50 */
+  --color-yellow-soft: #f3e8a8; /* Warning message background */
+  --color-yellow-darker: #7a5f00; /* Warning message text */
+  --color-disabled-fill: #d4d4d4; /* Label Colors/Disabled */
+
+  --color-label: #383838; /* Label Colors/Primary */
+  --color-label-secondary: #646569; /* Label Colors/Secondary */
+  --color-disabled: #747474; /* Content Colors/Body disabled */
+  --color-separator: #e6e6e6; /* Separator Colors/Primary */
+  --color-border: #e7e7e7; /* Border Colors/Primary */
+  --color-bg: #fcfcfc; /* Background Colors/Primary */
+  --color-bg-secondary: #f2f3f4; /* Background Colors/Secondary */
+
+  --shadow-card: 0px 2px 4px 0px rgba(30, 30, 30, 0.1); /* Card shadow/Primary */
+  --shadow-dashboard: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+  --shadow-button: 0px 1px 2px rgba(30, 30, 30, 0.35); /* Button/Primary Shadow */
+}
+
+@layer base {
+  html,
+  body {
+    @apply bg-bg font-sans text-label antialiased;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
