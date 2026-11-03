@@ -32,10 +32,22 @@ Para otra URL de API, define `VITE_API_URL` (por ejemplo, `https://mi-api.com/ap
 
 ### Usuarios de prueba (clave `1234`)
 
-| RUT | Caso |
-|---|---|
-| 11.111.111-1 | Con PassBanco: puede bloquear y desbloquear |
-| 22.222.222-2 | Sin PassBanco: puede bloquear, pero no desbloquear |
+Los datos los carga el backend con `py -m app.seed` (ver `app/seed.py`). Todos son ficticios.
+
+Usuarios base: tienen las 4 tarjetas (9911, 9712, 1719, 3020), todas activas.
+
+| RUT | Nombre | PassBanco | Uso |
+|---|---|---|---|
+| 9.935.747-9 | Andrea Bustos | Sí | Flujo 1: puede bloquear y desbloquear |
+| 8.954.597-8 | Bruno Castro | No | Flujo 2: puede bloquear, pero no desbloquear |
+
+Usuarios con escenarios: tarjetas en distintos estados, con historial y comprobantes.
+
+| RUT | Nombre | PassBanco | Tarjetas |
+|---|---|---|---|
+| 16.021.673-5 | Camila Rojas Fuentes | Sí | 4532 activa, sin compras por internet · 7781 bloqueada temporalmente · 2290 bloqueo definitivo (robo, op. 40217733) · 6158 adicional |
+| 5.649.759-5 | Diego Muñoz Soto | No | 6604 bloqueada temporalmente (no puede desbloquear) · 1185 sin cajeros ni pagos presenciales · 3347 adicional con bloqueo definitivo (deterioro, op. 71590264) |
+| 19.486.151-6 | Valentina Herrera Paz | Sí | 8820 activa · 5513 sin pagos presenciales · 9004 adicional · primer ingreso (sin "último acceso") |
 
 ## Scripts
 
