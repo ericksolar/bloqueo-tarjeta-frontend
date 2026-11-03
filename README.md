@@ -47,6 +47,7 @@ Usuarios con escenarios: tarjetas en distintos estados, con historial y comproba
 |---|---|---|---|
 | 16.021.673-5 | Camila Rojas Fuentes | Sí | 4532 activa, sin compras por internet · 7781 bloqueada temporalmente · 2290 bloqueo definitivo (robo, op. 40217733) · 6158 adicional |
 | 5.649.759-5 | Diego Muñoz Soto | No | 6604 bloqueada temporalmente (no puede desbloquear) · 1185 sin cajeros ni pagos presenciales · 3347 adicional con bloqueo definitivo (deterioro, op. 71590264) |
+
 ## Scripts
 
 | Comando | Descripción |
