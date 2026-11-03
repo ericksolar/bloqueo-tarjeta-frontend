@@ -1,0 +1,23 @@
+# Configuración de Netlify (se lee sola al importar el repo desde GitHub).
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# La API se llama por el mismo dominio de Netlify (/api/...) y Netlify la reenvía
+# al backend. Así las cookies de sesión (httpOnly, SameSite=Lax) funcionan sin CORS.
+# Si el backend queda con otra URL, cambia solo esta línea `to`.
+[[redirects]]
+  from = "/api/*"
+  to = "https://bloqueo-tarjetas-api.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# Cualquier otra ruta carga la app.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

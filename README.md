@@ -18,7 +18,7 @@ React 19 · Vite · Tailwind CSS v4 · responsive (móvil, tablet y escritorio).
 ## Requisitos
 
 - Node.js 20 o superior.
-- El backend [bloqueo-tarjetas-backend](../bloqueo-tarjetas-backend) (FastAPI) corriendo en `http://localhost:8000`.
+- El backend [bloqueo-tarjeta-backend](https://github.com/ericksolar/bloqueo-tarjeta-backend) (FastAPI) corriendo en `http://localhost:8000`.
 
 ## Puesta en marcha
 
@@ -29,6 +29,15 @@ npm run dev        # http://localhost:5173
 
 En desarrollo, Vite reenvía `/api` al backend (ver `vite.config.js`).
 Para otra URL de API, define `VITE_API_URL` (por ejemplo, `https://mi-api.com/api/v1`).
+
+## Deploy en Netlify
+
+`netlify.toml` ya trae todo lo necesario:
+- **Build:** `npm run build`, publica `dist/`.
+- **Proxy:** reenvía `/api/*` al backend en Render. Así la API queda en el mismo dominio y las cookies de sesión funcionan.
+
+En Netlify: **Add new site → Import an existing project → GitHub →** este repo. No hace falta cambiar nada más.
+Si el backend cambia de URL, edita la línea `to` del primer redirect en `netlify.toml`.
 
 ### Usuarios de prueba (clave `1234`)
 
