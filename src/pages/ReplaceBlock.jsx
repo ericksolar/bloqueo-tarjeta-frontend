@@ -8,6 +8,7 @@ import { Radio, Select } from "../components/ui/FormControls";
 import { LoadingOverlay } from "../components/ui/Loader";
 import Modal from "../components/ui/Modal";
 import { blockReasons } from "../data/blockReasons";
+import { getErrorMessage } from "../services/api";
 import { blockAndReplaceCard, getRegions } from "../services/cards";
 
 function PinIcon() {
@@ -52,15 +53,22 @@ export default function ReplaceBlock({ card, onCardChange, onBack, onHome }) {
   const [branch, setBranch] = useState("");
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [errorMessage, setErrorMessage] = useState("");
   const [receipt, setReceipt] = useState(null);
   const [regions, setRegions] = useState([]);
-  const [regionsError, setRegionsError] = useState(false);
+  const [regionsError, setRegionsError] = useState("");
 
   useEffect(() => {
     let active = true;
     getRegions()
       .then((data) => active && setRegions(data))
-      .catch(() => active && setRegionsError(true));
+      .catch(
+        (err) =>
+          active &&
+          setRegionsError(
+            getErrorMessage(err, "No pudimos cargar las sucursales. Recarga la página e inténtalo nuevamente."),
+          ),
+      );
     return () => {
       active = false;
     };
@@ -78,7 +86,11 @@ export default function ReplaceBlock({ card, onCardChange, onBack, onHome }) {
       setReceipt(result);
       onCardChange(result.card);
       setStatus("success");
-    } catch {
+    } catch (err) {
+      // 409 tarjeta ya bloqueada, 422 sucursal inexistente, etc.: el backend explica el motivo.
+      setErrorMessage(
+        getErrorMessage(err, "El bloqueo y reemplazo de tu tarjeta no se completó. Inténtalo nuevamente."),
+      );
       setStatus("error");
     }
     window.scrollTo(0, 0);
@@ -92,16 +104,8 @@ export default function ReplaceBlock({ card, onCardChange, onBack, onHome }) {
 
   return (
     <div className="flex max-w-[936px] flex-col gap-4">
-      {regionsError && (
-        <Alert variant="error">
-          No pudimos cargar las sucursales. Recarga la página e inténtalo nuevamente.
-        </Alert>
-      )}
-      {status === "error" && (
-        <Alert variant="error">
-          El bloqueo y reemplazo de tu tarjeta no se completó. Inténtalo nuevamente.
-        </Alert>
-      )}
+      {regionsError && <Alert variant="error">{regionsError}</Alert>}
+      {status === "error" && <Alert variant="error">{errorMessage}</Alert>}
 
       <Card>
         <div className="flex items-start gap-3 border-b border-separator p-4">

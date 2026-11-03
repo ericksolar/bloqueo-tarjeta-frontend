@@ -1,4 +1,3 @@
-import bannerImage from "../assets/figma/banner.png";
 import depositIcon from "../assets/figma/deposit.svg";
 import walletIcon from "../assets/figma/wallet-32.svg";
 import AppPhone from "../components/brand/AppPhone";
@@ -11,31 +10,6 @@ import {
 } from "../components/brand/StoreBadges";
 
 const dashCard = "overflow-hidden rounded-[5px] bg-white shadow-dashboard";
-
-function Banner({ title, subtitle, cta }) {
-  return (
-    <div className="relative flex min-h-[200px] w-full flex-col justify-between gap-4 overflow-hidden rounded-[5px] p-5 sm:p-8">
-      <img
-        src={bannerImage}
-        alt=""
-        className="absolute inset-0 size-full object-cover"
-      />
-      <div className="absolute inset-0 bg-black/20" />
-      <div className="relative flex w-full max-w-[400px] flex-col gap-1 pb-3 text-white">
-        <p className="text-[20px] font-bold leading-[26px]">{title}</p>
-        <p className="truncate text-[16px] leading-[22px] tracking-[0.2px]">
-          {subtitle}
-        </p>
-      </div>
-      <button
-        type="button"
-        className="relative h-12 w-fit rounded-[4px] bg-brand px-6 text-[14px] font-medium leading-5 text-white shadow-button"
-      >
-        {cta}
-      </button>
-    </div>
-  );
-}
 
 const statusLabel = {
   ACTIVE: "Activa",
@@ -55,7 +29,9 @@ function CardProduct({ card, onSelect }) {
       <div className="flex items-center gap-4">
         <CardThumbnail card={card} />
         <div className="flex flex-1 flex-col">
-          <p className="text-[16px] font-medium leading-[22px] text-label">{card.title}</p>
+          <p className="text-[16px] font-medium leading-[22px] text-label">
+            {card.title}
+          </p>
           <p className="text-[14px] leading-5 text-black">
             **** {card.last4} - {card.holder}
           </p>
@@ -66,11 +42,17 @@ function CardProduct({ card, onSelect }) {
           <p className="text-[14px] leading-5">
             {isCredit ? "Cupo disponible:" : "Saldo disponible:"}
           </p>
-          <p className="text-[24px] font-bold leading-[30px]">{formatCLP(card.balance)}</p>
+          <p className="text-[24px] font-bold leading-[30px]">
+            {formatCLP(card.balance)}
+          </p>
         </div>
         <div className="flex flex-1 flex-col gap-2 text-[14px] leading-5">
           <p>{card.network}</p>
-          <p className={card.status === "ACTIVE" ? "" : "font-medium text-red-darker"}>
+          <p
+            className={
+              card.status === "ACTIVE" ? "" : "font-medium text-red-darker"
+            }
+          >
             Estado: {statusLabel[card.status]}
           </p>
         </div>
@@ -132,8 +114,6 @@ function SectionTitle({ children }) {
 export default function Dashboard({ cards, onSelectCard }) {
   return (
     <div className="flex max-w-[979px] flex-col gap-5 lg:gap-6">
-      {/*<Banner title="Banner title" subtitle="Subtitle text" cta="Label" />*/}
-
       <section className="flex flex-col gap-[18px]">
         <SectionTitle>Mis tarjetas</SectionTitle>
         <div className="grid grid-cols-1 gap-4 pb-2 md:grid-cols-2 md:gap-6">

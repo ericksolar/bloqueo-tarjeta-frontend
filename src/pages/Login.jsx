@@ -2,7 +2,7 @@ import { useId, useState } from "react";
 import { BrandLogo } from "../components/brand/BrandMark";
 import Alert from "../components/ui/Alert";
 import { LoadingOverlay } from "../components/ui/Loader";
-import { ApiError } from "../services/api";
+import { getErrorMessage } from "../services/api";
 import { login } from "../services/auth";
 import { formatRut, isValidRut } from "../utils/rut";
 
@@ -83,12 +83,8 @@ export default function Login({ onLogin }) {
       const user = await login(rut, password);
       onLogin(user);
     } catch (err) {
-      // 401 credenciales, 429 demasiados intentos: el backend envía el mensaje.
-      setError(
-        err instanceof ApiError && err.status < 500
-          ? err.message
-          : "El servicio no está disponible. Inténtalo nuevamente.",
-      );
+      // 401 credenciales, 429 demasiados intentos, 422 RUT inválido: el backend envía el mensaje.
+      setError(getErrorMessage(err, "El servicio no está disponible. Inténtalo nuevamente."));
       setLoading(false);
     }
   }

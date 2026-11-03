@@ -8,6 +8,7 @@ import { Card, CardHeader } from "../components/ui/Card";
 import CardThumbnail from "../components/ui/CardThumbnail";
 import { LoadingOverlay } from "../components/ui/Loader";
 import Switch from "../components/ui/Switch";
+import { getErrorMessage } from "../services/api";
 import { setCardLock, updateCardLimits } from "../services/cards";
 
 const kindLabel = { credit: "crédito", debit: "débito" };
@@ -81,17 +82,17 @@ function StatusCard({ card, onToggleLock, disabled, hasPassBanco }) {
  */
 function LimitsCard({ card, hasPassBanco, onCardChange, onAutoBlock }) {
   const [saving, setSaving] = useState(null); // id del switch que se está guardando
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(""); // "" = sin error
 
   async function handleChange(id, value) {
     setSaving(id);
-    setError(false);
+    setError("");
     try {
       const updated = await updateCardLimits(card.id, { [id]: value });
       onCardChange(updated);
       if (updated.locked) onAutoBlock();
-    } catch {
-      setError(true);
+    } catch (err) {
+      setError(getErrorMessage(err, "No pudimos guardar el cambio. Inténtalo nuevamente."));
     } finally {
       setSaving(null);
     }
@@ -111,7 +112,7 @@ function LimitsCard({ card, hasPassBanco, onCardChange, onAutoBlock }) {
       </CardHeader>
       {error && (
         <div className="px-4 pt-4 sm:px-8">
-          <Alert variant="error">No pudimos guardar el cambio. Inténtalo nuevamente.</Alert>
+          <Alert variant="error">{error}</Alert>
         </div>
       )}
       {enabledCount === 1 && (
@@ -148,6 +149,7 @@ function LimitsCard({ card, hasPassBanco, onCardChange, onAutoBlock }) {
 export default function TemporaryBlock({ card, hasPassBanco, onCardChange, onBack }) {
   const [status, setStatus] = useState("idle");
   const [lastAction, setLastAction] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
   async function handleToggleLock() {
     const nextLocked = !card.locked;
@@ -156,7 +158,16 @@ export default function TemporaryBlock({ card, hasPassBanco, onCardChange, onBac
     try {
       onCardChange(await setCardLock(card.id, nextLocked));
       setStatus("success");
-    } catch {
+    } catch (err) {
+      // 403 sin PassBanco, 409 estado inválido, etc.: el backend explica el motivo.
+      setErrorMessage(
+        getErrorMessage(
+          err,
+          nextLocked
+            ? "El bloqueo temporal no se completó. Inténtalo nuevamente."
+            : "El desbloqueo no se completó. Inténtalo nuevamente.",
+        ),
+      );
       setStatus("error");
     }
   }
@@ -168,10 +179,6 @@ export default function TemporaryBlock({ card, hasPassBanco, onCardChange, onBac
       : lastAction === "lock"
       ? `Tu ${cardName} fue bloqueada. Enviaremos el comprobante a tu e-mail registrado.`
       : `Tu ${cardName} fue desbloqueada. Enviaremos el comprobante a tu e-mail registrado.`;
-  const errorMessage =
-    lastAction === "lock"
-      ? "El bloqueo temporal no se completó. Inténtalo nuevamente."
-      : "El desbloqueo no se completó. Inténtalo nuevamente.";
 
   return (
     <div className="flex max-w-[936px] flex-col gap-8">

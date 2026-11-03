@@ -9,7 +9,7 @@ import Login from "./pages/Login";
 import ReceiptPage from "./pages/ReceiptPage";
 import ReplaceBlock from "./pages/ReplaceBlock";
 import TemporaryBlock from "./pages/TemporaryBlock";
-import { onSessionExpired } from "./services/api";
+import { getErrorMessage, onSessionExpired } from "./services/api";
 import { getMe, logout } from "./services/auth";
 import { getCards } from "./services/cards";
 
@@ -18,7 +18,7 @@ export default function App() {
   const [user, setUser] = useState(undefined);
   const [screen, setScreen] = useState("dashboard");
   const [cards, setCards] = useState(null);
-  const [cardsError, setCardsError] = useState(false);
+  const [cardsError, setCardsError] = useState(""); // "" = sin error
   const [selectedId, setSelectedId] = useState(null);
 
   const selectedCard = cards?.find((c) => c.id === selectedId);
@@ -31,11 +31,11 @@ export default function App() {
   }, []);
 
   const loadCards = useCallback(async () => {
-    setCardsError(false);
+    setCardsError("");
     try {
       setCards(await getCards());
-    } catch {
-      setCardsError(true);
+    } catch (err) {
+      setCardsError(getErrorMessage(err, "No pudimos cargar tus tarjetas. Inténtalo nuevamente."));
     }
   }, []);
 
@@ -78,7 +78,7 @@ export default function App() {
     content = (
       <div className="max-w-[936px]">
         <Alert variant="error" action={{ label: "Reintentar", onClick: loadCards }}>
-          No pudimos cargar tus tarjetas. Inténtalo nuevamente.
+          {cardsError}
         </Alert>
       </div>
     );
